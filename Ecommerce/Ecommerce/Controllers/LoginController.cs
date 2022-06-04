@@ -2,10 +2,13 @@
 using MySql.Data.MySqlClient;
 using System.Threading.Tasks;
 
+
+
 namespace Ecommerce.Controllers
 {
     public class LoginController : Controller
     {
+        
         public IActionResult Index()
         {
             return View();
@@ -19,7 +22,7 @@ namespace Ecommerce.Controllers
             await mySqlConnection.OpenAsync();
             MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
 
-            mySqlCommand.CommandText = $"SELECT * FROM alunos WHERE matricula = '{matricula}' AND password='{senha}' ";
+            mySqlCommand.CommandText = $"SELECT * FROM alunos WHERE matricula = '{matricula}' AND senha='{senha}' ";
 
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
 
@@ -28,9 +31,12 @@ namespace Ecommerce.Controllers
                return Json(new { Msg = "Usuario logado com sucesso !" });
             }
 
-            return Json(new { Msg = "Usuario não encontrado, verifique suas credencias !" });
+            return Json(new { Msg = "Usuario não encontrado, verifique suas credencias !" });          
+        }
 
-            
+        [HttpPost]
+        public async Task<IActionResult> Cadastrar()
+        {
 
         }
     }
