@@ -18,26 +18,21 @@ namespace Ecommerce.Controllers
         public async Task<IActionResult> Logar(string matricula, string senha)
         {
 
-            MySqlConnection mySqlConnection = new MySqlConnection("server=localhost; database=uvajunior;uid=root; password=aa34244942");
-            await mySqlConnection.OpenAsync();
-            MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
+            //MySqlConnection mySqlConnection = new MySqlConnection("server=localhost; database=uvajunior;uid=root; password=aa34244942");
+            //await mySqlConnection.OpenAsync();
+           // MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
 
-            mySqlCommand.CommandText = $"SELECT * FROM alunos WHERE matricula = '{matricula}' AND senha='{senha}' ";
+           // mySqlCommand.CommandText = $"SELECT * FROM alunos WHERE matricula = '{matricula}' AND senha='{senha}' ";
 
-            MySqlDataReader reader = mySqlCommand.ExecuteReader();
+           // MySqlDataReader reader = mySqlCommand.ExecuteReader();
 
-            if(await reader.ReadAsync())
-            {
-               return Json(new { Msg = "Usuario logado com sucesso !" });
-            }
-
+          //  if(await reader.ReadAsync())
+         //   {
+          //     return Json(new { Msg = "Usuario logado com sucesso !" });
+        //    }
+        //
             return Json(new { Msg = "Usuario não encontrado, verifique suas credencias !" });          
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Cadastrar()
-        {
-
-        }
     }
 }

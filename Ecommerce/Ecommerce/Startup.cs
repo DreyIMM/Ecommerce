@@ -1,6 +1,8 @@
+using Ecommerce.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -18,12 +20,18 @@ namespace Ecommerce
             Configuration = configuration;
         }
 
+        //Pelo configuration consigo pelgar tudo que está dentro do appsettings.json
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            //Atraves do EF consigomos criar uma CODE Frist para o BD. 
+            services.AddDbContext<BancoContext>(options =>
+                             options.UseMySQL(Configuration.GetConnectionString("DataBase")));
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

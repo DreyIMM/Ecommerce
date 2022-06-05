@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Models
 {
-    public class Aluno
+
+    public class Alunos
     {
         public int Id { get; set; }
         
@@ -21,7 +22,7 @@ namespace Ecommerce.Models
 
         public string Senha { get; set; }
 
-        [Display(Name = "Celular")];
+        [Display(Name = "Celular")]
         public int Celular { get; set; }
     }
 }
