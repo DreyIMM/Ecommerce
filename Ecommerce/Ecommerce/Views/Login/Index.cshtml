@@ -1,15 +1,17 @@
-﻿@{ 
+﻿@model LoginModel
+@{ 
     ViewData["Title"] = "Login";
 }
 
+<form asp-controller="Login" asp-action="Entrar" method="post">
 
-<form asp-controller="Login" asp-action="Logar" method="post">
-        
     <label>Matricula do usuario </label>
-    <input type="number" name="matricula"/>
+    <input type="number" name="Matricula" />
+    @Html.ValidationMessageFor(x => x.Matricula)
 
     <label>Senha:</label>
-    <input type="password" name="senha" />          
-    <input type="submit" value="Enviar"/>
-        
+    <input type="password" name="Senha" />
+    @Html.ValidationMessageFor(x => x.Senha)
+    <input type="submit" value="Enviar" />
+
 </form>

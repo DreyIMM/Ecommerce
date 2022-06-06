@@ -1,37 +1,58 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Ecommerce.Models;
+using Ecommerce.Repositorio;
+using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
+using System;
 using System.Threading.Tasks;
-
-
 
 namespace Ecommerce.Controllers
 {
     public class LoginController : Controller
     {
-        
+
+        private readonly IAlunoRepositorio _alunoRepositorio;
+
+        public LoginController(IAlunoRepositorio alunoRepositorio)
+        {
+            this._alunoRepositorio = alunoRepositorio;
+        }
+
+
         public IActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Logar(string matricula, string senha)
+        public IActionResult Entrar(LoginModel loginModel)
         {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    Alunos alunos = _alunoRepositorio.BuscarPorLogin(loginModel.Matricula);
+                    if(alunos != null)
+                    {
+                        if (alunos.SenhaValid(loginModel.Senha))
+                        {
+                            return RedirectToAction("Index", "HomeProdutos");
+                        }
+                        else
+                        {
+                            TempData["MensagemErro"] = $"Senha incorreta. Tente novamente";
+                        }
+                    }
 
-            //MySqlConnection mySqlConnection = new MySqlConnection("server=localhost; database=uvajunior;uid=root; password=aa34244942");
-            //await mySqlConnection.OpenAsync();
-           // MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
+                }
 
-           // mySqlCommand.CommandText = $"SELECT * FROM alunos WHERE matricula = '{matricula}' AND senha='{senha}' ";
+                return View("Index");
+            }
+            catch (Exception erro)
+            {
 
-           // MySqlDataReader reader = mySqlCommand.ExecuteReader();
-
-          //  if(await reader.ReadAsync())
-         //   {
-          //     return Json(new { Msg = "Usuario logado com sucesso !" });
-        //    }
-        //
-            return Json(new { Msg = "Usuario não encontrado, verifique suas credencias !" });          
+                TempData["MensagemErro"] = $"Ops, não conseguimos localizar seu cadastro: {erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
     }

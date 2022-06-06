@@ -1,4 +1,6 @@
 using Ecommerce.Data;
+using Ecommerce.Repositorio;
+using Ecommerce.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +33,9 @@ namespace Ecommerce
             //Atraves do EF consigomos criar uma CODE Frist para o BD. 
             services.AddDbContext<BancoContext>(options =>
                              options.UseMySQL(Configuration.GetConnectionString("DataBase")));
+
+
+            services.AddScoped<IAlunoRepositorio, AlunoRepositorio>();
         
         }
 

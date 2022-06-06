@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ecommerce.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,18 +12,21 @@ namespace Ecommerce.Models
     {
         public int Id { get; set; }
         
-        [Display(Name= "Mátricula")]
+        [Required(ErrorMessage ="Digite a matricula")]
         public int Matricula { get; set; }
 
-        [Display(Name = "Nome")]
+        [Required(ErrorMessage = "Digite o nome")]
         public string Nome { get; set; }
-
-        [Display(Name = "E-mail")]
         public string Email { get; set; }
 
-        public string Senha { get; set; }
-
-        [Display(Name = "Celular")]
+        [Required(ErrorMessage = "Digite a senha")]
+        public string Senha { get; set; }          
         public int Celular { get; set; }
+        public PerfilEnum Perfil { get; set; }
+
+        public bool SenhaValid(string senha)
+        {
+            return Senha == senha;
+        }
     }
 }
