@@ -28,6 +28,7 @@ namespace Ecommerce.Controllers
         {
             try
             {
+                // erro aqui
                 if (ModelState.IsValid)
                 {
                     Alunos alunos = _alunoRepositorio.BuscarPorLogin(loginModel.Matricula);
