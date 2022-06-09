@@ -17,7 +17,6 @@ namespace Ecommerce.Controllers
             this._alunoRepositorio = alunoRepositorio;
         }
 
-
         public IActionResult Index()
         {
             return View();

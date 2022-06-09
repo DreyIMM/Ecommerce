@@ -17,12 +17,8 @@ namespace Ecommerce.Repositorio
         }
 
         public Alunos BuscarPorLogin(int matricula )
-        {
+        {           
             return _context.Alunos.FirstOrDefault(x => x.Matricula == matricula);
         }
-
-
-
-
     }
 }
