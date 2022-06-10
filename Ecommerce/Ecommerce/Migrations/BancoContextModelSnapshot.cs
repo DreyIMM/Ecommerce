@@ -32,9 +32,14 @@ namespace Ecommerce.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("Perfil")
+                        .HasColumnType("int");
+
                     b.Property<string>("Senha")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");

@@ -3,7 +3,7 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace Ecommerce.Migrations
 {
-    public partial class TabelaAlunos : Migration
+    public partial class Alunos : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,10 +14,11 @@ namespace Ecommerce.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Matricula = table.Column<int>(type: "int", nullable: false),
-                    Nome = table.Column<string>(type: "text", nullable: true),
+                    Nome = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: true),
-                    Senha = table.Column<string>(type: "text", nullable: true),
-                    Celular = table.Column<int>(type: "int", nullable: false)
+                    Senha = table.Column<string>(type: "text", nullable: false),
+                    Celular = table.Column<int>(type: "int", nullable: false),
+                    Perfil = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

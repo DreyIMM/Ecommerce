@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ecommerce.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20220605030507_TabelaAlunos")]
-    partial class TabelaAlunos
+    [Migration("20220609025636_Alunos")]
+    partial class Alunos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,9 +34,14 @@ namespace Ecommerce.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("Perfil")
+                        .HasColumnType("int");
+
                     b.Property<string>("Senha")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
