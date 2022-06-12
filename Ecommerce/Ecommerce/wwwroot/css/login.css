@@ -5,16 +5,28 @@ html, body {
     height: 100%;
 }
 
-label{
-    color: #ffffff;
-}
-
 .main .formlogin {
     background-color: #A6C36F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Coluna da direita */
+.form-group input, button {
+    width: 289px;
+    border-radius: 20px;
+}
+.btn {
+    background-color: #05552E !important;
+    color: white;
+    border-radius: 30px;
+}
+
+ /* Coluna da direita */
 .main_img {
     background-color: #05552E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
