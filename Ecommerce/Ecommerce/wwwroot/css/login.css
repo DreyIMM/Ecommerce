@@ -1,8 +1,27 @@
-﻿/*----------- estilizando login          ---------------- */
+﻿
+/*=========== estilizando login  ===================== */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/*----------- estilizando login          ---------------- */
  
 /* Coluna da esqueda */
 html, body {
     height: 100%;
+}
+
+.container-fluid {
+    height: calc(100vh - 60px) !important;
 }
 
 .main .formlogin {

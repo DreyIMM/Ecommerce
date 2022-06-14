@@ -5,13 +5,13 @@
 @section css {
     <link rel="stylesheet" href="~/css/login.css" />        
 }
-
+    
     <div class="main container-fluid h-100">
         <div class="row justify-content-center h-100">
             <div class="formlogin col-4  ">
                 <form asp-controller="Login" asp-action="Entrar" method="post">
                     <div class="form-group">
-                        <input type="number" class="form-control" id="matricula" aria-describedby="emailHelp" placeholder="Matricula" asp-for="Matricula">
+                        <input type="number" class="form-control" id="matricula" min="0" aria-describedby="emailHelp" placeholder="Matricula" asp-for="Matricula">
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control" id="senha" placeholder="Senha" asp-for="Senha">
