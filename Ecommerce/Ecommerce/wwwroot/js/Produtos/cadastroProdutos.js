@@ -21,21 +21,26 @@ DropArea.addEventListener("dragleave", () => {
 DropArea.addEventListener("drop", (event) => {
     event.preventDefault();
     file = event.dataTransfer.files[0];
-    let fileType = file.type;
+    let fileType = file.type;    
     typeFile(fileType);
+   
 
 })
-
 
 
 //Validando o tipo de arquivo
 const typeFile = (fileType) => {
     validExtensions = ["image/jpeg", "image/jpg", "image/png"];
     if (validExtensions.includes(fileType)) {
-        console.log(fileType);
+        let fileReader = new FileReader();
+        fileReader.onload = () => {
+            let fileURL = fileReader.result;
+            console.log(fileURL)
+        }
 
     } else {
-        console.log("erro"+fileType);
+        alert("Por favor, carregue uma imagem");
+        DropArea.classList.remove("active");
 
     };
 }
