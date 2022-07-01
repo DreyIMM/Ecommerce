@@ -1,7 +1,8 @@
 ﻿//Selecionaod as requisições
 const DropArea = document.querySelector(".drag-area");
-let file;
+let imgTag = document.querySelector(".preview_img")
 
+let file;
 
 //Se o usuario drag um arquivo na DropArea
 DropArea.addEventListener("dragover", (event) => {
@@ -20,28 +21,29 @@ DropArea.addEventListener("dragleave", () => {
 //Se o usuario dropar um arquivo na DropArea
 DropArea.addEventListener("drop", (event) => {
     event.preventDefault();
+
     file = event.dataTransfer.files[0];
-    let fileType = file.type;    
-    typeFile(fileType);
-   
+    let fileType = file.type;
 
-})
-
-
-//Validando o tipo de arquivo
-const typeFile = (fileType) => {
-    validExtensions = ["image/jpeg", "image/jpg", "image/png"];
+    let validExtensions = ["image/jpeg", "image/jpg", "image/png"];
     if (validExtensions.includes(fileType)) {
 
-        let fl = new FileReader();
-        fl.onload = () => {
-            let fileURL = fl.result;
+        let read = new FileReader();
+        read.onload = () => {
+            let fileURL = read.result;
             console.log(fileURL)
+            imgTag.setAttribute("src", fileURL)
+
         }
-        console.log("testes");
+        read.readAsDataURL(file);
+
     } else {
+
         alert("Por favor, carregue uma imagem");
         DropArea.classList.remove("active");
 
     };
-}
+
+})
+
+
