@@ -32,12 +32,13 @@ DropArea.addEventListener("drop", (event) => {
 const typeFile = (fileType) => {
     validExtensions = ["image/jpeg", "image/jpg", "image/png"];
     if (validExtensions.includes(fileType)) {
-        let fileReader = new FileReader();
-        fileReader.onload = () => {
-            let fileURL = fileReader.result;
+
+        let fl = new FileReader();
+        fl.onload = () => {
+            let fileURL = fl.result;
             console.log(fileURL)
         }
-
+        console.log("testes");
     } else {
         alert("Por favor, carregue uma imagem");
         DropArea.classList.remove("active");
